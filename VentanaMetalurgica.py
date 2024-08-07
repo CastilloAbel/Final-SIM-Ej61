@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import ttk
-
+from Fila import Fila
+from Resultados import ResultadosVentana
 class VentanaMetalurgica:
     def __init__(self, root):
         self.root = root
@@ -45,7 +46,6 @@ class VentanaMetalurgica:
         
     def iniciar_simulacion(self):
         # Aquí puedes agregar la lógica para iniciar la simulación
-        datos = {label: entry.get() for label, entry in self.entries.items()}
         datos = [entry.get() for entry in self.entries.values()]
 
         tiempo_total = int(datos[0])
@@ -63,12 +63,31 @@ class VentanaMetalurgica:
         cantidad_filas = int(datos[12])
         minuto_especifico = int(datos[13])
 
-        print("Datos ingresados para la simulación:", datos)
-        print("Simulación iniciada")
+        datos = [tiempo_total, prob_llegada_uno, prob_llegada_dos, prob_llegada_tres, prob_llegada_cuatro,
+                 fin_fundido_inf, fin_fundido_sup, fin_forjado_inf, fin_forjado_sup, fin_enfriado, 
+                 fin_terminado_inf, fin_terminado_sup]
+        
 
-# Crear la ventana principal y la instancia de la clase
-root = tk.Tk()
-app = VentanaMetalurgica(root)
+        # print("Datos ingresados para la simulación:", datos)
+        # print("Simulación iniciada")
+        tabla = []
+        for i in range(100000):
+            if i == 0:
+                fila = Fila(i+1)
+                lista = fila.simular(datos)
+                tabla.append(fila)
+            else:
+                if fila.reloj >= tiempo_total:
+                    tabla.pop()
+                    break
+                else:
+                    ob = []
+                    fila = Fila(i+1, lista[0], lista[1], lista[2], lista[3], lista[4], lista[5], lista[6])
+                    lista = fila.simular(datos)
+                    tabla.append(fila)
 
-# Iniciar el bucle principal de tkinter
-root.mainloop()
+        root_resultados = tk.Tk()
+        resultados_ventana = ResultadosVentana(root_resultados)
+        resultados_ventana.mostrar_resultados(tabla, minuto_especifico, cantidad_filas)
+        #for fila in tabla:
+        #    print(fila)
