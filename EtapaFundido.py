@@ -1,8 +1,9 @@
 class EtapaFundido():
-    def __init__(self) -> None:
-        self.nombre = "Fundido"
-        self.estado = False
-        self.cola = []
+    def __init__(self, nombre="Fundido", estado=False, cola=[]) -> None:
+        self.nombre = nombre
+        self.estado = estado
+        self.cola = cola
+
 
     def set_estado(self, estado):
         self.estado = estado

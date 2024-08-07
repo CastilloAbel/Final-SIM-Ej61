@@ -9,10 +9,10 @@ class Fila:
         self.id = id
         self.reloj = reloj
         self.eventos = eventos
-        self.etapa_fundido = etapa_fundido
-        self.etapa_forjado = etapa_forjado
-        self.etapa_enfriado = etapa_enfriado
-        self.etapa_terminado = etapa_terminado
+        self.etapa_fundido = EtapaFundido(etapa_fundido.get_nombre(), etapa_fundido.get_estado(), etapa_fundido.get_cola())
+        self.etapa_forjado = EtapaForjado(etapa_forjado.get_nombre(), etapa_forjado.get_estado(), etapa_forjado.get_cola())
+        self.etapa_enfriado = EtapaEnfriado(etapa_enfriado.get_nombre(), etapa_enfriado.get_estado(), etapa_enfriado.get_piezas())
+        self.etapa_terminado = EtapaTerminado(etapa_terminado.get_nombre(), etapa_terminado.get_estado(), etapa_terminado.get_cola())
         self.objetos = objetos
 
     def get_objetos(self)->list:
@@ -95,17 +95,19 @@ class Fila:
                     self.set_objetos(obj)
                 else:
                     self.etapa_fundido.set_estado(False)
+                    self.eventos = [self.eventos[0], 
+                                [None, None, None], self.eventos[2],self.eventos[3],self.eventos[4]]
                 if self.etapa_forjado.get_estado():
                     obj = self.get_objetos()
                     for o in obj:
                         if o.get_estado() == "Fundiendo":
                             o.set_estado("Esperando Forjar")
                             pieza = o
+                            cola = self.etapa_forjado.get_cola()
+                            cola.append(pieza)
+                            self.etapa_forjado.set_cola(cola)
                             break
                     self.set_objetos(obj)
-                    cola = self.etapa_forjado.get_cola()
-                    cola.append(pieza)
-                    self.etapa_forjado.set_cola(cola)
                 else:
                     obj = self.get_objetos()
                     for o in obj:
@@ -137,6 +139,8 @@ class Fila:
                                 self.eventos[3],self.eventos[4]]
                 else:
                     self.etapa_forjado.set_estado(False)
+                    self.eventos = [self.eventos[0], self.eventos[1], [None, None, None], self.eventos[3],
+                                self.eventos[4]]
                 obj = self.get_objetos()
                 for o in obj:
                     if o.get_estado() == "Forjando":
@@ -194,6 +198,8 @@ class Fila:
                                     [rnd_fin_terminado, tiempo_terminado, self.reloj + tiempo_terminado]]
                 else:
                     self.etapa_terminado.set_estado(False)
+                    self.eventos = [self.eventos[0], self.eventos[1], self.eventos[2], self.eventos[3], 
+                                    [None, None, None]]
                 obj = self.get_objetos()
                 for o in obj:
                     if o.get_estado() == "Terminando":

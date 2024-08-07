@@ -114,8 +114,8 @@ class ResultadosVentana:
                                 truncar(fila.eventos[2][0]), truncar(fila.eventos[2][1]),truncar(fila.eventos[2][2]),
                                 truncar(fila.eventos[3][0]),truncar(fila.eventos[3][1]), truncar(fila.eventos[3][2]),
                                 truncar(fila.eventos[4][0]),truncar(fila.eventos[4][1]), truncar(fila.eventos[4][2]),
-                                fila.etapa_fundido.get_estado(), fila.etapa_fundido.get_cola(), fila.etapa_forjado.get_estado(), fila.etapa_forjado.get_cola(),
-                                fila.etapa_enfriado.get_estado(), fila.etapa_enfriado.get_piezas(), fila.etapa_terminado.get_estado(), fila.etapa_terminado.get_cola(),
+                                fila.etapa_fundido.get_estado(), len(fila.etapa_fundido.get_cola()), fila.etapa_forjado.get_estado(), len(fila.etapa_forjado.get_cola()),
+                                fila.etapa_enfriado.get_estado(), fila.etapa_enfriado.get_piezas(), fila.etapa_terminado.get_estado(), len(fila.etapa_terminado.get_cola()),
                                 objeto1, objeto2, objeto3, objeto4))
 
             self.tree.insert("", "end", values=(tabla_resultados[-1].id, tabla_resultados[-1].nombre_evento, truncar(tabla_resultados[-1].reloj),
@@ -124,8 +124,8 @@ class ResultadosVentana:
                                 truncar(tabla_resultados[-1].eventos[2][0]), truncar(tabla_resultados[-1].eventos[2][1]),truncar(tabla_resultados[-1].eventos[2][2]),
                                 truncar(tabla_resultados[-1].eventos[3][0]),truncar(tabla_resultados[-1].eventos[3][1]), truncar(tabla_resultados[-1].eventos[3][2]),
                                 truncar(tabla_resultados[-1].eventos[4][0]),truncar(tabla_resultados[-1].eventos[4][1]), truncar(tabla_resultados[-1].eventos[4][2]),
-                                tabla_resultados[-1].etapa_fundido.get_estado(), tabla_resultados[-1].etapa_fundido.get_cola(), tabla_resultados[-1].etapa_forjado.get_estado(), tabla_resultados[-1].etapa_forjado.get_cola(),
-                                tabla_resultados[-1].etapa_enfriado.get_estado(), tabla_resultados[-1].etapa_enfriado.get_piezas(), tabla_resultados[-1].etapa_terminado.get_estado(), tabla_resultados[-1].etapa_terminado.get_cola()))
+                                tabla_resultados[-1].etapa_fundido.get_estado(), len(tabla_resultados[-1].etapa_fundido.get_cola()), tabla_resultados[-1].etapa_forjado.get_estado(), len(tabla_resultados[-1].etapa_forjado.get_cola()),
+                                tabla_resultados[-1].etapa_enfriado.get_estado(), tabla_resultados[-1].etapa_enfriado.get_piezas(), tabla_resultados[-1].etapa_terminado.get_estado(), len(tabla_resultados[-1].etapa_terminado.get_cola())))
 
                                                 
         elif hora_especifica != 0 and cantidad_filas != 0:
@@ -154,8 +154,8 @@ class ResultadosVentana:
                                 truncar(fila.eventos[2][0]), truncar(fila.eventos[2][1]),truncar(fila.eventos[2][2]),
                                 truncar(fila.eventos[3][0]),truncar(fila.eventos[3][1]), truncar(fila.eventos[3][2]),
                                 truncar(fila.eventos[4][0]),truncar(fila.eventos[4][1]), truncar(fila.eventos[4][2]),
-                                fila.etapa_fundido.get_estado(), fila.etapa_fundido.get_cola(), fila.etapa_forjado.get_estado(), fila.etapa_forjado.get_cola(),
-                                fila.etapa_enfriado.get_estado(), fila.etapa_enfriado.get_piezas(), fila.etapa_terminado.get_estado(), fila.etapa_terminado.get_cola(),
+                                fila.etapa_fundido.get_estado(), len(fila.etapa_fundido.get_cola()), fila.etapa_forjado.get_estado(), len(fila.etapa_forjado.get_cola()),
+                                fila.etapa_enfriado.get_estado(), fila.etapa_enfriado.get_piezas(), fila.etapa_terminado.get_estado(), len(fila.etapa_terminado.get_cola()),
                                 objeto1, objeto2, objeto3, objeto4))
 
             self.tree.insert("", "end", values=(tabla_resultados[-1].id, tabla_resultados[-1].nombre_evento, truncar(tabla_resultados[-1].reloj),
@@ -164,7 +164,7 @@ class ResultadosVentana:
                                 truncar(tabla_resultados[-1].eventos[2][0]), truncar(tabla_resultados[-1].eventos[2][1]),truncar(tabla_resultados[-1].eventos[2][2]),
                                 truncar(tabla_resultados[-1].eventos[3][0]),truncar(tabla_resultados[-1].eventos[3][1]), truncar(tabla_resultados[-1].eventos[3][2]),
                                 truncar(tabla_resultados[-1].eventos[4][0]),truncar(tabla_resultados[-1].eventos[4][1]), truncar(tabla_resultados[-1].eventos[4][2]),
-                                tabla_resultados[-1].etapa_fundido.get_estado(), tabla_resultados[-1].etapa_fundido.get_cola(), tabla_resultados[-1].etapa_forjado.get_estado(), tabla_resultados[-1].etapa_forjado.get_cola(),
-                                tabla_resultados[-1].etapa_enfriado.get_estado(), tabla_resultados[-1].etapa_enfriado.get_piezas(), tabla_resultados[-1].etapa_terminado.get_estado(), tabla_resultados[-1].etapa_terminado.get_cola()))
+                                tabla_resultados[-1].etapa_fundido.get_estado(), len(tabla_resultados[-1].etapa_fundido.get_cola()), tabla_resultados[-1].etapa_forjado.get_estado(), len(tabla_resultados[-1].etapa_forjado.get_cola()),
+                                tabla_resultados[-1].etapa_enfriado.get_estado(), tabla_resultados[-1].etapa_enfriado.get_piezas(), tabla_resultados[-1].etapa_terminado.get_estado(), len(tabla_resultados[-1].etapa_terminado.get_cola())))
         else:
             self.tree.insert("","end",values="")           

@@ -86,6 +86,7 @@ class VentanaMetalurgica:
                     lista = fila.simular(datos)
                     tabla.append(fila)
 
+
         root_resultados = tk.Tk()
         resultados_ventana = ResultadosVentana(root_resultados)
         resultados_ventana.mostrar_resultados(tabla, minuto_especifico, cantidad_filas)

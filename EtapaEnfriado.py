@@ -1,8 +1,8 @@
 class EtapaEnfriado():
-    def __init__(self) -> None:
-        self.nombre = "Enfriado"
-        self.estado = False
-        self.cantidad_piezas = 0
+    def __init__(self, nombre="Enfriado", estado=False, cantidad_piezas=0) -> None:
+        self.nombre = nombre
+        self.estado = estado
+        self.cantidad_piezas = cantidad_piezas
 
     def set_estado(self, estado):
         self.estado = estado
